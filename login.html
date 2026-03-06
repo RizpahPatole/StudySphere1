@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login - StudySphere</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: url("images/bg-study.jpg") center/cover no-repeat;;
+    }
+
+    .login-container {
+      width: 100%;
+      max-width: 380px;
+      padding: 20px;
+    }
+
+    .login-card {
+      background: rgba(5, 5, 5, 0.15);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-radius: 16px;
+      padding: 40px 32px;
+      box-shadow: 0 20px 40px rgba(12, 12, 12, 0.15);
+      color: white;
+      text-align: center;
+    }
+
+    .logo {
+      font-size: 26px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .subtitle {
+      font-size: 14px;
+      opacity: 0.85;
+      margin-bottom: 28px;
+    }
+
+    .input-group {
+      text-align: left;
+      margin-bottom: 16px;
+    }
+
+    .input-group label {
+      font-size: 13px;
+      display: block;
+      margin-bottom: 6px;
+      opacity: 0.9;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 12px;
+      border-radius: 10px;
+      border: none;
+      outline: none;
+      font-size: 14px;
+      transition: 0.25s ease;
+    }
+
+    .input-group input:focus {
+      transform: scale(1.02);
+      box-shadow: 0 0 0 2px rgba(255,255,255,0.35);
+    }
+
+    .btn-primary {
+      width: 100%;
+      padding: 12px;
+      border-radius: 10px;
+      border: none;
+      background: white;
+      color: #2563eb;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: 0.25s ease;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.2);
+    }
+
+    .small-text {
+      font-size: 13px;
+      margin-top: 18px;
+      opacity: 0.9;
+    }
+
+    .small-text a {
+      color: white;
+      font-weight: 500;
+      text-decoration: underline;
+    }
+
+    /* Mobile */
+    @media (max-width: 420px) {
+      .login-card {
+        padding: 32px 22px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="login-container">
+  <div class="login-card">
+
+    <div class="logo">StudySphere</div>
+    <div class="subtitle">Welcome back — continue your focus journey</div>
+
+    <form id="loginForm">
+
+      <div class="input-group">
+        <label>Email</label>
+        <input type="email" id="email" placeholder="Enter your email" required />
+      </div>
+
+      <div class="input-group">
+        <label>Password</label>
+        <input type="password" id="password" placeholder="Enter your password" required />
+      </div>
+      <div class="forgot-row">
+        <a href="forgot.html" class="forgot-link">Forgot password?</a>
+      </div>
+
+      <button type="submit" class="btn-primary">Login</button>
+
+    </form>
+
+    <div class="small-text">
+      Don't have an account?
+      <a href="signup.html">Sign up</a>
+    </div>
+
+  </div>
+</div>
+
+<script>
+document.getElementById("loginForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+
+  const storedUser = JSON.parse(localStorage.getItem("user"));
+
+  if (!storedUser) {
+    alert("User not registered. Please sign up first.");
+    return;
+  }
+
+  if (storedUser.email === email && storedUser.password === password) {
+    localStorage.setItem("isLoggedIn", "true");
+    window.location.href = "dashboard.html";
+  } else {
+    alert("Invalid email or password");
+  }
+});
+</script>
+
+</body>
+</html>
