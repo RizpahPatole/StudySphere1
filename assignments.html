@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Assignments - StudySphere</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="panel">
+
+  <h2 class="heading">📋 Assignments</h2>
+
+  <!-- ADD SECTION -->
+  <div class="add-section">
+    <input type="text" id="assignmentInput" placeholder="Assignment name">
+    <input type="date" id="dueDate">
+
+    <select id="priority">
+      <option value="High">High 🔴</option>
+      <option value="Medium">Medium 🟡</option>
+      <option value="Low">Low 🟢</option>
+    </select>
+
+    <button onclick="addAssignment()">➕ Add</button>
+  </div>
+
+  <!-- AI MESSAGE -->
+  <p id="aiSuggestion" class="ai-box"></p>
+
+  <!-- PROGRESS -->
+  <p id="progressText">Completed: 0 / 0</p>
+
+  <div class="progress-bar">
+    <div id="progressFill" class="progress-fill"></div>
+  </div>
+
+  <hr>
+
+  <!-- FILTERS -->
+  <div class="filters">
+    <button onclick="filterAssignments('all')">All</button>
+    <button onclick="filterAssignments('pending')">Pending</button>
+    <button onclick="filterAssignments('submitted')">Submitted</button>
+    <button onclick="filterAssignments('overdue')">Overdue</button>
+  </div>
+
+  <!-- LIST -->
+  <div id="assignmentList" class="assignment-container"></div>
+
+  <!-- EXTRA SECTION -->
+<div class="extra-section">
+
+  <!-- UPCOMING DEADLINES -->
+  <div class="extra-card">
+    <h3>⏰ Upcoming Deadlines</h3>
+    <ul id="deadlineList"></ul>
+  </div>
+
+  <!-- RECENT ACTIVITY -->
+  <div class="extra-card">
+    <h3>📌 Recent Activity</h3>
+    <ul id="activityList"></ul>
+  </div>
+
+  <!-- QUICK STATS -->
+  <div class="extra-card">
+    <h3>📊 Quick Stats</h3>
+    <p id="quickStats"></p>
+  </div>
+
+  <!-- MOTIVATION -->
+  <div class="extra-card">
+    <h3>💡 Study Tip</h3>
+    <p id="tipBox">Stay consistent. Small progress daily!</p>
+  </div>
+
+</div>
+
+</div>
+
+<script src="assignments.js"></script>
+
+</body>
+</html>
